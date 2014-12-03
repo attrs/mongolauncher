@@ -3,7 +3,7 @@
 ### Examples
 #### Programmatically Launch
 
-```
+```sh
 $ npm install plexi.mongodb --save
 ```
 
@@ -51,7 +51,7 @@ mongod2.stop();
 "pmongo" cli arguments is same as original "mongod" options.
 
 #### windows
-```
+```sh
 > npm install -g plexi.mongodb@2.6
 
 > pmongo
@@ -60,7 +60,7 @@ or
 ```
 
 ##### osx/linux
-```
+```sh
 $ sudo npm install -g plexi.mongodb@2.6
 
 $ sudo pmongo
