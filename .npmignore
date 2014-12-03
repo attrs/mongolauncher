@@ -1,0 +1,17 @@
+.DS_Store
+.git*
+.idea
+.project
+Makefile
+docs/
+examples/
+inbrowser/
+support/
+test/
+build/
+plexi_modules/
+workspace/
+logs/
+mongodb/
+download/
+data/

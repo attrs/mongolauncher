@@ -1,0 +1,47 @@
+{
+  "name": "plexi.mongodb",
+  "description": "mongodb install & luancher plugin for plexi",
+  "version": "2.6.5-alpha.1",
+  "scripts": {
+    "postinstall": "node scripts/install.js",
+    "start": "node src/start.js"
+  },
+  "main": "activator.js",
+  "plexi": {
+    "activator": "activator.js"
+  },
+  "bin": {
+    "plexi-mongo": "bin/plexi-mongo"
+  },
+  "dependencies": {
+    "download": "^3.1.2",
+    "download-status": "^2.1.0",
+    "mkdirp": "^0.5.0"
+  },
+  "homepage": "https://github.com/attrs/plexi.mongodb",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/attrs/plexi.mongodb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/attrs/plexi.mongodb/issues"
+  },
+  "author": {
+    "name": "attrs",
+    "email": "contact.attrs@gmail.com",
+    "url": "https://github.com/attrs"
+  },
+  "contributors": [
+    {
+      "name": "joje",
+      "email": "joje.attrs@gmail.com",
+      "url": "https://github.com/joje6"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ]
+}
