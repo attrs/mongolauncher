@@ -1,12 +1,15 @@
 # plexi.mongodb
 
+"plexi.mongodb" makes it possible to automatically install & launch MongoDB.
+
 ### Examples
 #### Programmatically Launch
-
+##### Installation
 ```sh
 $ npm install plexi.mongodb --save
 ```
 
+##### package usage
 ```js
 var pmongo = require('plexi.mongodb');
 
@@ -14,16 +17,25 @@ var mongod = pmongo.create('mydb', {
 	// use default logfile
 	log: true,			
 	// port
-	port: 20999,		
+	port: 20991,		
 	// datafile path, default is node_modules/plexi.mongodb/data/(mydb)
 	dbpath: 'somedir',	
 	// logfile path, default(must be log:true) is node_modules/plexi.mongodb/logs/(mydb).log
 	logpath: 'somefile.log'	
 }).start(console);
+
+// able to launch multiple mongodb instance (watch the port conflict)
+var mongod2 = pmongo.create('db2', {log:true, port: 20992}).start(console);
+var mongod3 = pmongo.create('db3').start();
+
+// stop mongod instance
+mongod.stop();
+mongod2.stop();
 ```
 
+##### extra attrs/methods
 ```js
-// child process
+// get child process
 var ps = mongod.child;
 
 // mongod process cwd
@@ -37,22 +49,15 @@ console.log(mongod.connected);
 
 // process pid
 console.log(mongod.pid());
-
-var mongod2 = pmongo.create('db2', {log:true}).start(console);
-var mongod3 = pmongo.create('db3').start();
-
-// stop mongod instance
-mongod.stop();
-mongod2.stop();
 ```
 
-### Install the executable
+#### Install the executable
 
 "2.6" in "plexi.mongodb@2.6" means mongodb version "2.6.x"
 
 "pmongo" cli arguments is same as original "mongod" options.
 
-#### windows
+##### windows
 ```sh
 > npm install -g plexi.mongodb@2.6
 

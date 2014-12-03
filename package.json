@@ -11,7 +11,7 @@
 		"activator": "activator.js"
 	},
 	"bin": {
-		"pmongo": "bin/plexi-mongo"
+		"pmongo": "bin/pmongo"
 	},
 	"dependencies": {
 		"download": "^3.1.2",
@@ -29,8 +29,10 @@
 	"repository": "attrs/plexi.mongodb",
 	"keywords": [
 		"mongodb",
+		"mongo",
 		"db",
 		"database",
-		"plexi"
+		"plexi",
+		"attrs"
 	]
 }
