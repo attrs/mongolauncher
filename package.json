@@ -3,7 +3,7 @@
   "description": "mongodb install & luancher plugin for plexi",
   "version": "2.6.5-alpha.1",
   "scripts": {
-    "postinstall": "node scripts/install.js",
+    "postinstall": "node src/install.js",
     "start": "node src/start.js"
   },
   "main": "activator.js",
@@ -16,7 +16,8 @@
   "dependencies": {
     "download": "^3.1.2",
     "download-status": "^2.1.0",
-    "mkdirp": "^0.5.0"
+    "mkdirp": "^0.5.0",
+    "semver": "^4.1.0"
   },
   "homepage": "https://github.com/attrs/plexi.mongodb",
   "repository": {

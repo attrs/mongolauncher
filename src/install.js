@@ -3,9 +3,11 @@
 var path = require('path');
 var fs = require('fs');
 
-var version = require('../package.json').version;
 var url;
-var base = 'http://mongodb-dist-test.dev/'; //'http://downloads.mongodb.org';
+var base = 'http://downloads.mongodb.org';
+
+var semver = require('semver').parse(require('../package.json').version);
+var version = [semver.major, semver.minor, semver.patch].join('.');
 
 switch( process.platform ) {
 	case 'win32':
