@@ -22,11 +22,16 @@ function Mongod(name, options) {
 		for(var k in options) {
 			if( k === 'log' ) continue;
 			
-			if( k[0] !== '-' ) k = '--' + k;
+			var name = k;
+			if( name[0] !== '-' ) name = '--' + name;
 			
-			argv.push(k);
-			var value = argv[k];
-			if( value && typeof(value) === 'string' ) {
+			var value = options[k];
+			if( value !== 0 && !value ) {
+				continue;
+			} else if( value === true ) {
+				argv.push(name);
+			} else {
+				argv.push(name);
 				argv.push('\"' + value + '\"');
 			}
 		}
@@ -55,7 +60,6 @@ function Mongod(name, options) {
 	this.executable = executable;
 	this.argv = argv;
 	this.command = command;
-	console.log('command', command);
 };
 
 Mongod.prototype = {
