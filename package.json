@@ -1,7 +1,7 @@
 {
 	"name": "plexi.mongodb",
 	"description": "mongodb install & launcher internally",
-	"version": "2.6.5-alpha.3",
+	"version": "2.6.5-alpha.4",
 	"scripts": {
 		"postinstall": "node src/install.js",
 		"start": "node src/start.js"

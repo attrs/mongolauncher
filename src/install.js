@@ -6,6 +6,8 @@ var fs = require('fs');
 var url;
 var base = 'http://downloads.mongodb.org';
 
+//base = 'http://mongodb-dist-test.dev/';
+
 var semver = require('semver').parse(require('../package.json').version);
 var version = [semver.major, semver.minor, semver.patch].join('.');
 
@@ -67,11 +69,8 @@ var rmdirRecursive = function(path) {
 };
 
 
-var dest = path.resolve(__dirname, '..', 'download');
-var to = path.resolve(__dirname, '..', 'mongodb');
-
+var dest = path.resolve(__dirname, '..', 'mongodb');
 rmdirRecursive(dest);
-rmdirRecursive(to);
 
 var Download = require('download');
 var progress = require('download-status');
@@ -84,43 +83,9 @@ new Download({ extract: true, strip: 1, mode: '755' })
 	    if (err) {
 	        throw err;
 	    }
-	
-		fs.mkdirSync(to);
-		fs.renameSync(dest, to);
-		rmdirRecursive(dest);
 	}
 );
 
-if( false ) {
-	var download = require('download');
-	var rimraf = require('rimraf');
-	var createBar = require('multimeter')(process);
-	
-	rimraf.sync(dest);
-	var bar = createBar({ before: url + ' [' });
-
-	var total = 0;
-	var progress = 0;
-
-	download(url, dest, { extract: true, strip: 1 }).on('response', function(res) {
-		total = parseInt(res.headers['content-length']);
-	}).on('data', function(data) {
-		progress += data.length;
-		if( total > 0 ) {
-			var percent = progress / total * 100;
-			bar.percent(percent);
-			if( percent === 100 ) {
-				console.log(', Done.');
-			}
-		}
-	}).on('error', function(err) {
-		console.log(', Failure.', err);
-	}).on('close', function() {
-		
-	
-	
-	});
-}
 /*
 https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-2.6.5.zip
 https://fastdl.mongodb.org/win32/mongodb-win32-i386-2.6.5.zip
