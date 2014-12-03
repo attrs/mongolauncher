@@ -8,10 +8,14 @@ $ npm install plexi.mongodb --save
 var pmongo = require('plexi.mongodb');
 
 var mongod = pmongo.create('mydb', {
-	log: true,			// use default logfile
-	port: 20999,		// port
-	dbpath: 'somedir',	// datafile path, default is node_modules/plexi.mongodb/data/(mydb)
-	logpath: 'somefile.log'	// logfile path, default(must be log:true) is node_modules/plexi.mongodb/logs/(mydb).log
+	// use default logfile
+	log: true,			
+	// port
+	port: 20999,		
+	// datafile path, default is node_modules/plexi.mongodb/data/(mydb)
+	dbpath: 'somedir',	
+	// logfile path, default(must be log:true) is node_modules/plexi.mongodb/logs/(mydb).log
+	logpath: 'somefile.log'	
 }).start(console);
 
 // child process
