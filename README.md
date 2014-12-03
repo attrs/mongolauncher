@@ -20,7 +20,9 @@ var mongod = pmongo.create('mydb', {
 	// logfile path, default(must be log:true) is node_modules/plexi.mongodb/logs/(mydb).log
 	logpath: 'somefile.log'	
 }).start(console);
+```
 
+```js
 // child process
 var ps = mongod.child;
 
