@@ -1,6 +1,6 @@
 # plexi.mongodb
 
-"plexi.mongodb" makes it possible to automatically install & launch MongoDB.
+Automatically install & launch MongoDB.
 
 ### Examples
 #### Programmatically Launch
