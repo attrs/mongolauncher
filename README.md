@@ -1,5 +1,8 @@
 # plexi.mongodb
 
+### Examples
+#### Programmatically Launch
+
 ```
 $ npm install plexi.mongodb --save
 ```
@@ -19,7 +22,7 @@ var mongod = pmongo.create('mydb', {
 }).start(console);
 
 // child process
-//console.log(mongod.child);
+var ps = mongod.child;
 
 // mongod process cwd
 console.log(mongod.cwd);
@@ -28,7 +31,7 @@ console.log(mongod.cwd);
 console.log(mongod.command);
 
 // process connect status(boolean)
-//console.log(mongod.connected);
+console.log(mongod.connected);
 
 // process pid
 console.log(mongod.pid());
