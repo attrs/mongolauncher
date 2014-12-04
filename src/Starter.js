@@ -96,7 +96,15 @@ Mongod.prototype = {
 		if( this.child ) this.child.kill('SIGHUP');
 	}
 }
+
+process.on('SIGINT', function () {
+	console.log('SIGINT:kill mongod');
 	
+	for(var k in processes) {
+		var mongod = processes[k];
+		if( mongod instanceof Mongod ) mongod.stop();
+	}
+});
 
 var processes = {};
 module.exports = {
