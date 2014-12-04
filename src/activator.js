@@ -5,8 +5,7 @@ module.exports = {
 	start: function(ctx) {
 		var options = ctx.preference;
 		
-		mongod = Starter.create(options);
-		mongod.start(console);
+		mongod = Starter.create('default', options).start(console);
 		
 		console.log('* mongodb started', options);
 	},

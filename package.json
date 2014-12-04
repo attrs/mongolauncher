@@ -1,10 +1,11 @@
 {
 	"name": "plexi.mongodb",
-	"description": "mongodb install & launcher internally",
+	"description": "mongodb install & launcher",
 	"version": "2.6.5-alpha.4",
 	"scripts": {
 		"postinstall": "node src/install.js",
-		"start": "node src/start.js"
+		"start": "node src/start.js",
+		"test": "node src/test.js"
 	},
 	"main": "activator.js",
 	"plexi": {
@@ -19,17 +20,18 @@
 		"mkdirp": "^0.5.0",
 		"semver": "^4.1.0"
 	},
-  
+	
+	
 	"author": "joje <joje.attrs@gmail.com>",
-	"contributors": [
-		"attrs <contact.attrs@gmail.com>",
-		"joje <joje.attrs@gmail.com>"
-	],
-	"license": "MIT",
+	"homepage": "https://github.com/attrs/plexi.mongodb",
 	"repository": "attrs/plexi.mongodb",
+	"license": "MIT",
 	"keywords": [
 		"mongodb",
 		"mongo",
+		"install",
+		"installer",
+		"programmatically",
 		"db",
 		"database",
 		"plexi",

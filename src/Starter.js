@@ -76,11 +76,11 @@ Mongod.prototype = {
 		child.stderr.setEncoding('utf8');
 		
 		child.stdout.on('data', function(data) {
-			if( monitor.log ) monitor.log(data);
+			if( monitor && monitor.log ) monitor.log(data);
 		});
 		
 		child.stderr.on('data', function (data) {
-			if( monitor.error ) monitor.error(data);
+			if( monitor && monitor.error ) monitor.error(data);
 		});
 	
 		this.child = child;	
