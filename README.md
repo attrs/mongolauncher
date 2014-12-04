@@ -1,4 +1,5 @@
 # plexi.mongodb
+[![Build Status](https://travis-ci.org/attrs/plexi.mongodb.svg?branch=master)](https://travis-ci.org/attrs/plexi.mongodb)
 
 Automatically install & launch MongoDB.
 

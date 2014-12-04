@@ -1,7 +1,7 @@
 {
 	"name": "plexi.mongodb",
 	"description": "mongodb install & launcher",
-	"version": "2.6.5-alpha.4",
+	"version": "2.6.5-alpha.5",
 	"scripts": {
 		"postinstall": "node src/install.js",
 		"start": "node src/start.js",
@@ -9,7 +9,7 @@
 	},
 	"main": "activator.js",
 	"plexi": {
-		"activator": "activator.js"
+		"activator": "src/activator.js"
 	},
 	"bin": {
 		"pmongo": "bin/pmongo"
