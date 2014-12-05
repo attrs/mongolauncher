@@ -93,18 +93,14 @@ Mongod.prototype = {
 		return this.child.connected;	
 	},
 	stop: function() {
-		if( this.child ) this.child.kill('SIGHUP');
+		var code = -1;
+		if( this.child ) {
+			code = this.child.kill('SIGHUP');
+			console.log('[' + this.name + '] mongod stopped [' + this.command + ']');
+		}
+		return code;
 	}
 }
-
-process.on('SIGINT', function () {
-	console.log('SIGINT:kill mongod');
-	
-	for(var k in processes) {
-		var mongod = processes[k];
-		if( mongod instanceof Mongod ) mongod.stop();
-	}
-});
 
 var processes = {};
 module.exports = {
@@ -112,6 +108,23 @@ module.exports = {
 		var arr = [];
 		for(var k in processes) arr.push(k);
 		return arr;
+	},
+	get: function(name) {
+		return processes[name];
+	},
+	processes: function() {
+		var arg = [];
+		for(var k in processes) {
+			var mongod = processes[k];
+			if( mongod instanceof Mongod ) arr.push(mogod);
+		}
+		return arg;	
+	},
+	stopAll: function() {
+		for(var k in processes) {
+			var mongod = processes[k];
+			if( mongod instanceof Mongod ) mongod.stop();
+		}
 	},
 	mongod: function(name) {
 		return processes[name];	

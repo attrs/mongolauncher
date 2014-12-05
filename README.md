@@ -12,9 +12,9 @@ $ npm install plexi.mongodb --save
 
 ##### package usage
 ```js
-var pmongo = require('plexi.mongodb');
+var MongoStarter = require('plexi.mongodb');
 
-var mongod = pmongo.create('mydb', {
+var mongod = MongoStarter.create('mydb', {
 	// use default logfile
 	log: true,			
 	// port
@@ -26,16 +26,26 @@ var mongod = pmongo.create('mydb', {
 }).start(console);
 
 // able to launch multiple mongodb instance (watch the port conflict)
-var mongod2 = pmongo.create('db2', {log:true, port: 20992}).start(console);
-var mongod3 = pmongo.create('db3').start();
+var mongod2 = MongoStarter.create('db2', {log:true, port: 20992}).start(console);
+var mongod3 = MongoStarter.create('db3').start();
 
 // stop mongod instance
 mongod.stop();
 mongod2.stop();
+MongoStarter.stopAll();
 ```
 
 ##### extra attrs/methods
 ```js
+// current mongod process names
+var names = MongoStarter.names();
+
+// current mongod processes
+var processes = MongoStarter.processes();
+
+// get mongod process by name
+var p = MongoStarter.get('mydb');
+
 // get child process
 var ps = mongod.child;
 

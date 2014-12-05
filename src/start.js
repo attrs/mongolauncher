@@ -1,6 +1,9 @@
 var Starter = require('./Starter.js');
 
-var argv = process.argv.splice(2);
+process.on('SIGINT', function () {
+	Starter.stopAll();	
+	process.exit();
+});
 
-var mongod = Starter.create('default', argv);
-mongod.start(console);
+Starter.create('default', process.argv.splice(2)).start(console);
+

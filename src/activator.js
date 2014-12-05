@@ -1,15 +1,17 @@
 var Starter = require('./Starter.js');
 
-var mongod;
 module.exports = {
 	start: function(ctx) {
 		var options = ctx.preference;
 		
-		mongod = Starter.create('default', options).start(console);
+		var out = options.console !== false ? console : null;
+		
+		Starter.create('default', options).start(out);
 		
 		console.log('* mongodb started', options);
 	},
 	stop: function(ctx) {
-		mongod.stop();
+		Starter.stopAll();
+		console.log('* mongodb stopped');
 	}
 };
