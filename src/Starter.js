@@ -44,13 +44,15 @@ function Mongod(name, options) {
 	}
 	
 	if( !~command.indexOf('--dbpath') ) {
-		var dbpath = path.resolve(__dirname, '../data/' + name);
+		var dbpath = path.resolve(process.cwd(), '.mongodb', name);
 		mkdirp.sync(dbpath);
 		command += ' --dbpath "' + dbpath + '"';
 	}
 	
+	options.log = true;
+	
 	if( options.log && !~command.indexOf('--logpath') ) {
-		var logpath = path.resolve(__dirname, '../logs/');
+		var logpath = path.resolve(process.cwd(), '.mongodb', 'logs');
 		mkdirp.sync(logpath);
 		command += ' --logpath "' + path.resolve(logpath, name + '.log') + '"';
 	}

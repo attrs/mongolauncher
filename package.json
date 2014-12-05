@@ -1,7 +1,7 @@
 {
 	"name": "plexi.mongodb",
 	"description": "mongodb install & launcher",
-	"version": "2.6.5-alpha.7",
+	"version": "2.6.5-alpha.9",
 	"scripts": {
 		"postinstall": "node src/install.js",
 		"start": "node src/start.js",
@@ -18,7 +18,11 @@
 		"download": "^3.1.2",
 		"download-status": "^2.1.0",
 		"mkdirp": "^0.5.0",
-		"semver": "^4.1.0"
+		"semver": "^4.1.0",
+		"wrench": "^1.5.8",
+		"progress": "^1.1.8",
+		"color": "^0.7.1",
+		"osenv": "^0.1.0"
 	},
 	
 	
