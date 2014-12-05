@@ -13,5 +13,4 @@ plexi_modules/
 workspace/
 logs/
 mongodb/
-download/
-data/
+.mongodb/
