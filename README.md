@@ -2,8 +2,8 @@
 
 [![NPM Version][npm-image]][npm-url]
 [![NPM Downloads][downloads-image]][downloads-url]
-<!-- [![Build Status][travis-image-flat]][travis-url] -->
 [![Gratipay][gratipay-image]][gratipay-url]
+<!-- [![Build Status][travis-image-flat]][travis-url] -->
 
 Automatically install & launch MongoDB.
 
