@@ -45,12 +45,11 @@ function Mongod(name, options) {
 	
 	if( !~command.indexOf('--dbpath') ) {
 		var dbpath = path.resolve(process.cwd(), '.mongodb', name);
+		options.dbpath = dbpath;
 		mkdirp.sync(dbpath);
 		command += ' --dbpath "' + dbpath + '"';
 	}
-	
-	options.log = true;
-	
+		
 	if( options.log && !~command.indexOf('--logpath') ) {
 		var logpath = path.resolve(process.cwd(), '.mongodb', 'logs');
 		mkdirp.sync(logpath);
@@ -67,7 +66,8 @@ function Mongod(name, options) {
 Mongod.prototype = {
 	start: function(monitor) {
 		if( typeof(monitor) ===  'function' ) monitor = {log:monitor};
-			
+		
+		//console.log(this.command);
 		var child = exec(this.command, {
 			encoding: 'utf8',
 			cwd: this.cwd
@@ -78,11 +78,11 @@ Mongod.prototype = {
 		child.stderr.setEncoding('utf8');
 		
 		child.stdout.on('data', function(data) {
-			if( monitor && monitor.log ) monitor.log(data);
+			if( monitor && monitor.write ) monitor.write(data);
 		});
 		
 		child.stderr.on('data', function (data) {
-			if( monitor && monitor.error ) monitor.error(data);
+			if( monitor && monitor.write ) monitor.write(data);
 		});
 	
 		this.child = child;	
@@ -128,14 +128,21 @@ module.exports = {
 			if( mongod instanceof Mongod ) mongod.stop();
 		}
 	},
-	mongod: function(name) {
-		return processes[name];	
-	},
 	create: function(name, options) {
 		if( processes[name] ) throw new Error('already exists:' + name);
 		var mongod = new Mongod(name, options);
 			
 		processes[name] = mongod;
 		return mongod;
+	},
+	remove: function(name) {
+		var mongod = this.get(name);
+		if( mongod ) {
+			mongod.stop();
+			processes[name] = null;
+			delete processes[name];
+			return mongod;
+		}
+		return false;
 	}
 };

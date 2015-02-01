@@ -1,44 +1,42 @@
 {
-	"name": "plexi.mongodb",
-	"description": "mongodb install & launcher",
-	"version": "2.6.5-alpha.9",
-	"scripts": {
-		"postinstall": "node src/install.js",
-		"start": "node src/start.js",
-		"test": "node src/test.js"
-	},
-	"main": "activator.js",
-	"plexi": {
-		"activator": "src/activator.js"
-	},
-	"bin": {
-		"pmongo": "bin/pmongo"
-	},
-	"dependencies": {
-		"download": "^3.1.2",
-		"download-status": "^2.1.0",
-		"mkdirp": "^0.5.0",
-		"semver": "^4.1.0",
-		"wrench": "^1.5.8",
-		"progress": "^1.1.8",
-		"color": "^0.7.1",
-		"osenv": "^0.1.0"
-	},
-	
-	
-	"author": "joje <joje.attrs@gmail.com>",
-	"homepage": "https://github.com/attrs/plexi.mongodb",
-	"repository": "attrs/plexi.mongodb",
-	"license": "MIT",
-	"keywords": [
-		"mongodb",
-		"mongo",
-		"install",
-		"installer",
-		"programmatically",
-		"db",
-		"database",
-		"plexi",
-		"attrs"
-	]
+  "name": "plexi.mongodb",
+  "description": "mongodb install & launcher",
+  "version": "0.1.0",
+  "scripts": {
+    "postinstall": "node src/install.js",
+    "test": "node test/test.js"
+  },
+  "main": "src/main.js",
+  "plexi": {
+    "activator": "src/activator.js"
+  },
+  "bin": {
+    "pmongo": "bin/pmongo.js"
+  },
+  "dependencies": {
+    "chalk": "^0.5.1",
+    "color": "^0.7.1",
+    "download": "^3.1.2",
+    "download-status": "^2.1.0",
+    "mkdirp": "^0.5.0",
+    "osenv": "^0.1.0",
+    "progress": "^1.1.8",
+    "semver": "^4.1.0",
+    "wrench": "^1.5.8"
+  },
+  "author": "joje <joje.attrs@gmail.com>",
+  "homepage": "https://github.com/attrs/plexi.mongodb",
+  "repository": "attrs/plexi.mongodb",
+  "license": "MIT",
+  "keywords": [
+    "mongodb",
+    "mongo",
+    "install",
+    "installer",
+    "programmatically",
+    "db",
+    "database",
+    "plexi",
+    "attrs"
+  ]
 }

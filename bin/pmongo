@@ -1,7 +1,0 @@
-#!/usr/bin/env node
-
-'use strict';
-
-process.title = 'plexi-mongo';
-
-require('../src/start.js');
