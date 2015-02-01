@@ -9,8 +9,7 @@ inbrowser/
 support/
 test/
 build/
-plexi_modules/
-workspace/
+.plexi/
 logs/
 mongodb/
 .mongodb/
