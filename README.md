@@ -23,7 +23,7 @@ var mongod = MongoStarter.create('mydb', {
 	dbpath: 'somedir',	
 	// logfile path, default(must be log:true) is node_modules/plexi.mongodb/logs/(mydb).log
 	logpath: 'somefile.log'	
-}).start(console);
+}).start(process.stdout);
 
 // able to launch multiple mongodb instance (watch the port conflict)
 var mongod2 = MongoStarter.create('db2', {log:true, port: 20992}).start(console);
@@ -64,13 +64,11 @@ console.log(mongod.pid());
 
 #### Install the executable
 
-"2.6" in "plexi.mongodb@2.6" means mongodb version "2.6.x"
-
 "pmongo" cli arguments is same as original "mongod" options.
 
 ##### windows
 ```sh
-> npm install -g plexi.mongodb@2.6
+> npm install -g plexi.mongodb
 
 > pmongo
 or
@@ -79,7 +77,7 @@ or
 
 ##### osx/linux
 ```sh
-$ sudo npm install -g plexi.mongodb@2.6
+$ sudo npm install -g plexi.mongodb
 
 $ sudo pmongo
 or
