@@ -9,6 +9,7 @@ var Download = require('download');
 var progress = require('download-status');
 var wrench = require('wrench');
 var ProgressBar = require('progress');
+var osenv = require('osenv');
 
 function geturl(version) {
 	var arch = process.arch;
@@ -101,12 +102,18 @@ process.stdin.on('data', function (inputVersion) {
 		process.stdout.write(chalk.green('checking version: ' + version + ' (' + url + ') ... '));
 	
 		// check cache, if file exists in cache, use it
-		var osenv = require('osenv');
 		var userhome = osenv.home();
 		var cachedir = path.resolve(userhome, '.plexi.mongodb');
 		var cachefile = path.resolve(cachedir, filename);
 		var dest = path.resolve(__dirname, '..', 'mongodb');
-		if( !fs.existsSync(cachedir) ) fs.mkdirSync(cachedir);
+		if( !fs.existsSync(cachedir) ) {
+			try {
+				fs.mkdirSync(cachedir);
+			} catch(err) {
+				cachedir = path.resolve(__dirname, '..', 'download');
+				cachefile = path.resolve(cachedir, filename);
+			}
+		}
 	
 		var copy = function() {		
 			if( fs.existsSync(dest) ) rmdirRecursive(dest);
