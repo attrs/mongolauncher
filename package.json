@@ -1,7 +1,7 @@
 {
   "name": "plexi.mongodb",
   "description": "mongodb install & launcher",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "postinstall": "node src/install.js",
     "test": "node test/test.js"
@@ -31,9 +31,6 @@
   "keywords": [
     "mongodb",
     "mongo",
-    "install",
-    "installer",
-    "programmatically",
     "db",
     "database",
     "plexi",
