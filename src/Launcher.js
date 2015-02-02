@@ -93,10 +93,10 @@ Launcher.prototype = {
 	},
 	stop: function() {
 		var code = -1;
-		
 		if( this.child ) {
 			code = this.child.kill('SIGHUP');
-			console.log('[' + this.name + '] process stopped [' + this.command + ']');
+			this.child = null;
+			console.log('[' + this.name + '] process stopped(' + code + ') [' + this.command + ']');
 		}
 		return code;
 	}

@@ -30,7 +30,7 @@ var mongod = MongoStarter.create('mydb', {
 }).start(process.stdout);
 
 // able to launch multiple mongodb instance (watch the port conflict)
-var mongod2 = MongoStarter.create('db2', {log:true, port: 20992}).start(console);
+var mongod2 = MongoStarter.create('db2', {log:true, port: 20992}).start(process.stdout);
 var mongod3 = MongoStarter.create('db3').start();
 
 // stop mongod instance

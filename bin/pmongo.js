@@ -20,7 +20,7 @@ mongod.start(process.stdout);
 
 if( argv.console !== false ) {
 	MongoConsole.connect({
-		port: argv.port,
+		port: argv.port || 27017,
 		host: argv.host || '127.0.0.1'
 	});
 }

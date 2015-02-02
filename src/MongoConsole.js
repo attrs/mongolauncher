@@ -31,10 +31,13 @@ var MongoConsole = {
 			} catch(err) {
 			}
 		});		
-		process.on('exit', function(code) {
-			self.disconnect();
+		child.on('exit', function(code) {
+			self.process = null;
+			process.stdin.removeAllListeners('data');
+			process.stdin.pause();
+			console.log('mongo console stopped');
 		});
-		process.on('uncaughtException', function(err) {
+		child.on('uncaughtException', function(err) {
 			console.log('MongoConsole error: ' + err);
 		});
 		
