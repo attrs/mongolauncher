@@ -1,4 +1,4 @@
-var Starter = require('./Starter.js');
+var Launcher = require('./Launcher.js');
 var path = require('path');
 var fs = require('fs');
 
@@ -12,7 +12,7 @@ module.exports = {
 			config.logpath = config.logpath || path.resolve(config.dbpath, '../' + k + '.log');
 			
 			var out = config.console ? process.stdout : null;
-			Starter.create(k, config).start(out);
+			Launcher.create(k, config).start(out);
 			console.log('* mongodb[' + k + ':' + (config.port || '(27017)') + '] started "' + config.dbpath + '"');
 		};
 		
@@ -26,23 +26,23 @@ module.exports = {
 				return create(name, config);
 			},
 			remove: function(name) {
-				return Starter.remove(name);
+				return Launcher.remove(name);
 			},
 			names: function() {
-				return Starter.names();
+				return Launcher.names();
 			},
 			get: function(name) {
-				return Starter.get(name);
+				return Launcher.get(name);
 			},
 			stop: function(name) {
-				var p = Starter.get(name);
+				var p = Launcher.get(name);
 				if( p ) return p.stop();
 			},
-			Starter: Starter
+			Launcher: Launcher
 		};
 	},
 	stop: function(ctx) {
-		Starter.stopAll();
+		Launcher.stopAll();
 		console.log('* mongodb stopped');
 	}
 };

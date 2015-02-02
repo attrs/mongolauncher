@@ -13,8 +13,8 @@ pids
 logs
 results
 node_modules
-plexi_modules
-workspace
+
+.plexi
 mongodb
 .mongodb
 

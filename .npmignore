@@ -9,7 +9,9 @@ inbrowser/
 support/
 test/
 build/
-.plexi/
 logs/
+*.log
+
+.plexi/
 mongodb/
 .mongodb/

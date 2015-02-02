@@ -4,13 +4,13 @@
 
 process.title = 'plexi.mongodb';
 
-var Starter = require('../src/Starter.js');
+var Launcher = require('../src/Launcher.js');
 process.on('SIGINT', function () {
-	Starter.stopAll();	
+	Launcher.stopAll();	
 	process.exit();
 });
 
-var mongod = Starter.create('default', process.argv.splice(2));
+var mongod = Launcher.create('default', process.argv.splice(2));
 mongod.start(process.stdout);
 mongod.console();
 

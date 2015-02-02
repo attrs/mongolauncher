@@ -1,8 +1,8 @@
-var Starter = require('./Starter.js');
+var Launcher = require('./Launcher.js');
 
 process.on('SIGINT', function () {
-	Starter.stopAll();	
+	Launcher.stopAll();	
 	process.exit();
 });
 
-module.exports = Starter;
+module.exports = Launcher;
