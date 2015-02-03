@@ -8,17 +8,21 @@ module.exports = {
 		var ws = ctx.workspace;
 		
 		var create = function(name, config) {
-			config.dbpath = config.dbpath || ws.mkdir(k + '/data');
-			config.logpath = config.logpath || path.resolve(config.dbpath, '../' + k + '.log');
-			
+			if( Launcher.get(name) ) return console.error('already exist name', name);
+			config.dbpath = config.dbpath || ws.mkdir(name + '/data');
+			config.logpath = config.logpath || path.resolve(config.dbpath, '../' + name + '.log');
+						
 			var out = config.console ? process.stdout : null;
-			Launcher.create(k, config).start(out);
-			console.log('* mongodb[' + k + ':' + (config.port || '(27017)') + '] started "' + config.dbpath + '"');
+			Launcher.create(name, config).start(out);
 		};
 		
 		var instances = options.instances;
 		for(var k in instances) {
 			create(k, instances[k]);
+		}
+		
+		if( !instances ) {
+			create('default', {});
 		}
 				
 		return {
@@ -43,6 +47,5 @@ module.exports = {
 	},
 	stop: function(ctx) {
 		Launcher.stopAll();
-		console.log('* mongodb stopped');
 	}
 };

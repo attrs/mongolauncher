@@ -19,20 +19,12 @@ function Launcher(name, options) {
 		command = command + ' ' + argv.join(' ');
 	} else if( typeof(options) === 'object' ) {
 		for(var k in options) {
-			if( k === 'log' ) continue;
-			
-			var name = k;
-			if( name[0] !== '-' ) name = '--' + name;
+			if( !k ) continue;
 			
 			var value = options[k];
-			if( value !== 0 && !value ) {
-				continue;
-			} else if( value === true ) {
-				argv.push(name);
-			} else {
-				argv.push(name);
-				argv.push('\"' + value + '\"');
-			}
+		
+			argv.push( k[0] !== '-' ? '--' + k : k);
+			if( value || typeof value === 'boolean' || typeof value === 'number' ) argv.push('\"' + value + '\"');
 		}
 		
 		command = command + ' ' + argv.join(' ');
@@ -81,6 +73,8 @@ Launcher.prototype = {
 		child.stderr.on('data', function (data) {
 			if( monitor && monitor.write ) monitor.write(data);
 		});
+		
+		console.log('[mongodb] process(' + this.name + ') started [' + this.command + ']');
 	
 		this.child = child;	
 		return this;
@@ -96,7 +90,7 @@ Launcher.prototype = {
 		if( this.child ) {
 			code = this.child.kill('SIGHUP');
 			this.child = null;
-			console.log('[' + this.name + '] process stopped(' + code + ') [' + this.command + ']');
+			console.log('[mongodb] process(' + this.name + ') stopped(' + code + ') [' + this.command + ']');
 		}
 		return code;
 	}
