@@ -3,6 +3,8 @@ var fs = require('fs');
 var mkdirp = require('mkdirp');
 var exec = require('child_process').exec;
 
+var ENV = {};
+
 // class Launcher
 function Launcher(name, options) {
 	if( !name || typeof(name) !== 'string' ) throw new Error('illegal name:' + name);
@@ -57,26 +59,33 @@ Launcher.prototype = {
 	start: function(monitor) {
 		if( typeof(monitor) === 'function' ) monitor = {write:monitor};
 		
+		var self = this;
+		var name = this.name;
+		var command = this.command;
+		var cwd = this.cwd;
+		
 		//console.log(this.command);
-		var child = exec(this.command, {
+		var child = this.child = exec(command, {
 			encoding: 'utf8',
-			cwd: this.cwd
+			cwd: cwd,
+			env: ENV
+		}, function(err, stdout, stderr) {
+			if( err ) return console.error('[mongodb] startup error(' + name + ')', command, err);
+		}).on('exit', function(code) {
+			self.child = null;
 		});
 		
 		child.stdout.setEncoding('utf8');
 		child.stderr.setEncoding('utf8');
-		
 		child.stdout.on('data', function(data) {
 			if( monitor && monitor.write ) monitor.write(data);
 		});
-		
 		child.stderr.on('data', function (data) {
 			if( monitor && monitor.write ) monitor.write(data);
 		});
 		
-		console.log('[mongodb] process(' + this.name + ') started [' + this.command + ']');
-	
-		this.child = child;	
+		console.log('[mongodb] startup(' + name + ') [' + command + ']');
+		
 		return this;
 	},
 	pid: function() {
@@ -98,6 +107,21 @@ Launcher.prototype = {
 
 var processes = {};
 module.exports = {
+	env: function(key, value) {
+		if( !arguments.length ) return ENV;
+		if( arguments.length === 1 ) {
+			if( typeof key === 'string' ) {
+				return ENV[key];
+			} else if( typeof key === 'object' ) {
+				ENV = key;
+			}
+			return this;
+		}
+		
+		if( typeof key !== 'string' ) return console.error('illegal env key', key);
+		ENV[key] = value;		
+		return this;
+	},
 	names: function() {
 		var arr = [];
 		for(var k in processes) arr.push(k);
