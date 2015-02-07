@@ -70,9 +70,10 @@ Launcher.prototype = {
 			cwd: cwd,
 			env: ENV
 		}, function(err, stdout, stderr) {
-			if( err ) return console.error('[mongodb] startup error(' + name + ')', command, err);
+			if( err ) return console.error('[mongodb:' + name + '] startup error', command, err);
 		}).on('exit', function(code) {
 			self.child = null;
+			console.log('[mongodb:' + name + '] stopped(' + code + ') [' + command + ']');
 		});
 		
 		child.stdout.setEncoding('utf8');
@@ -84,7 +85,7 @@ Launcher.prototype = {
 			if( monitor && monitor.write ) monitor.write(data);
 		});
 		
-		console.log('[mongodb] startup(' + name + ') [' + command + ']');
+		console.log('[mongodb:' + name + '] startup [' + command + ']');
 		
 		return this;
 	},
@@ -99,7 +100,7 @@ Launcher.prototype = {
 		if( this.child ) {
 			code = this.child.kill('SIGHUP');
 			this.child = null;
-			console.log('[mongodb] process(' + this.name + ') stopped(' + code + ') [' + this.command + ']');
+			console.log('[mongodb:' + this.name + '] stopped(' + code + ') [' + this.command + ']');
 		}
 		return code;
 	}
