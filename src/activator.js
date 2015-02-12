@@ -4,7 +4,7 @@ var fs = require('fs');
 
 module.exports = {
 	start: function(ctx) {
-		var options = ctx.preference;
+		var pref = ctx.preference || {};
 		var ws = ctx.workspace;
 		
 		var create = function(name, config) {
@@ -16,7 +16,7 @@ module.exports = {
 			Launcher.create(name, config).start(out);
 		};
 		
-		var instances = options.instances;
+		var instances = pref.instances;
 		for(var k in instances) {
 			create(k, instances[k]);
 		}
