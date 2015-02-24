@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "attrs.argv": "^0.2.0-a",
-    "chalk": "^0.5.1",
+    "chalk": "^1.0.0",
     "color": "^0.7.1",
     "download": "^3.1.2",
     "download-status": "^2.1.0",
