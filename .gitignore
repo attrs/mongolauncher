@@ -19,3 +19,4 @@ mongodb
 .mongodb
 
 npm-debug.log
+plexi.json

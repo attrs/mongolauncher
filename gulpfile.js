@@ -27,7 +27,8 @@ var paths = {
 			gulp.task(test_name, function () {
 				return gulp.src(src, {read: false})
 					.pipe(mocha(argv))
-					.once('error', function () {
+					.once('error', function (err) {
+						console.error(err.stack);
 					    process.exit(1);
 					})
 					.once('end', function () {
@@ -40,7 +41,8 @@ var paths = {
 	gulp.task('test', function () {
 		return gulp.src(srcs, {read: false})
 			.pipe(mocha(argv))
-			.once('error', function () {
+			.once('error', function (err) {
+				console.error(err.stack);
 			    process.exit(1);
 			})
 			.once('end', function () {

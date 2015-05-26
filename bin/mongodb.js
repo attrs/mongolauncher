@@ -13,7 +13,7 @@ var osenv = require('osenv');
 process.title = pkg.name;
 
 if( !argv.dbpath ) {
-	argv.dbpath = path.resolve(osenv.home(), '.plexi', 'mongodb', 'data');
+	argv.dbpath = path.resolve(osenv.home(), '.mongodb', 'default');
 }
 wrench.mkdirSyncRecursive(argv.dbpath);
 
@@ -23,9 +23,9 @@ m.launch(argv, function(err, ps) {
 	console.log(chalk.green('└── dbpath is "' + ps.options.dbpath + '"'));
 });
 
-if( argv.console !== false ) {
+/*if( argv.console !== false ) {
 	m.console.connect({
 		port: argv.port || 27017,
 		host: argv.host || '127.0.0.1'
 	});
-}
+}*/
