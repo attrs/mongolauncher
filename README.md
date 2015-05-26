@@ -13,10 +13,15 @@ $ npm install plexi.mongodb --save
 ```
 
 ## Usage
+
+#### Programmatically
+> if mongodb not installed your system will be installed before launch.
+
 ```js
 var launcher = require('plexi.mongodb');
 
 launcher.launch({
+	version: '3.0.3',
 	port: 27017,
 	dbpath: '.mongo/data',
 	logfile: '.mongo/logs/mongo.log'
@@ -27,16 +32,13 @@ launcher.launch({
 });
 ```
 
-#### Global Installation
+#### Global Usage
+##### install & launch mongodb
+> cli arguments is same as original "mongod" options.
 
-"pm" cli arguments is same as original "mongod" options.
-
-##### launch
 ```sh
 $ npm install -g plexi.mongodb
-$ pm
-or
-$ pm --port <port> --dbpath "some/dir" --logpath "some/dir/mongodb.log"
+$ pm --port 27017 --dbpath "some/dir"
 ```
 
 ### License
