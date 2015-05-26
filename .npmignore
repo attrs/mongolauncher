@@ -13,6 +13,5 @@ logs/
 *.log
 
 .plexi/
-mongodb/
-.mongodb/
+.mongo/
 plexi.json

@@ -17,6 +17,7 @@
   "dependencies": {
     "attrs.argv": "^0.2.0-a",
     "attrs.util": "^0.1.1",
+    "chalk": "^1.0.0",
     "download": "^3.1.2",
     "download-status": "^2.1.0",
     "osenv": "^0.1.1",

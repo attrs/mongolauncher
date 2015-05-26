@@ -19,6 +19,7 @@ wrench.mkdirSyncRecursive(argv.dbpath);
 
 m.launch(argv, function(err, ps) {
 	if( err ) return console.error(chalk.red(err));
+	console.log('mongodb started [%s]', ps.pid);
 	console.log(chalk.cyan('mongod started') + ' at ' + (ps.options.port || '27017'));
 	console.log(chalk.green('└── dbpath is "' + ps.options.dbpath + '"'));
 });

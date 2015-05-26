@@ -15,8 +15,7 @@ results
 node_modules
 
 .plexi
-mongodb
-.mongodb
+.mongo
 
 npm-debug.log
 plexi.json
