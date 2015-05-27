@@ -45,12 +45,12 @@ $ pm --port 27017 --dbpath "some/dir"
 
   [MIT](LICENSE)  
 
- [npm-image]: https://img.shields.io/npm/v/plexi.mongodb.svg?style=flat
- [npm-url]: https://npmjs.org/package/plexi.mongodb
- [downloads-image]: https://img.shields.io/npm/dm/plexi.mongodb.svg?style=flat
- [downloads-url]: https://npmjs.org/package/plexi.mongodb
- [travis-image-flat]: https://img.shields.io/travis/attrs/plexi.mongodb.svg?style=flat
- [travis-image]: https://travis-ci.org/attrs/plexi.mongodb.svg?branch=master
- [travis-url]: https://travis-ci.org/attrs/plexi.mongodb
- [gratipay-image]: https://img.shields.io/gratipay/teamattrs.svg?style=flat
- [gratipay-url]: https://gratipay.com/teamattrs/
+[npm-image]: https://img.shields.io/npm/v/plexi.mongodb.svg?style=flat
+[npm-url]: https://npmjs.org/package/plexi.mongodb
+[downloads-image]: https://img.shields.io/npm/dm/plexi.mongodb.svg?style=flat
+[downloads-url]: https://npmjs.org/package/plexi.mongodb
+[travis-image-flat]: https://img.shields.io/travis/attrs/plexi.mongodb.svg?style=flat
+[travis-image]: https://travis-ci.org/attrs/plexi.mongodb.svg?branch=master
+[travis-url]: https://travis-ci.org/attrs/plexi.mongodb
+[gratipay-image]: https://img.shields.io/gratipay/teamattrs.svg?style=flat
+[gratipay-url]: https://gratipay.com/teamattrs/
