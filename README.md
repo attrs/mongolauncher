@@ -17,17 +17,16 @@ $ npm install mongolauncher --save
 ```js
 var mongolauncher = require('mongolauncher');
 
+// use default dbpath, logfile, version(3.4.5)
+mongolauncher.launch(27017);
+
 mongolauncher.launch({
-	version: '3.0.3',
-	port: 27017,
-    arg: ['--auth'],
-	dbpath: '.mongo/data',
-	logfile: '.mongo/logs/mongo.log'
-}, function(err, ps) {
-	if( err ) return console.error(err);
-	
-	console.log('mongodb started pid:%s', ps.pid);
-});
+  version: '3.0.3',
+  port: 27018,
+  argv: ['--auth'],
+  dbpath: '.mongo/data',
+  logfile: '.mongo/logs/mongo.log'
+}, function(err, ps) { ... });
 ```
 
 ### License
