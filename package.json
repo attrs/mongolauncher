@@ -16,5 +16,10 @@
   "keywords": [
     "mongodb",
     "mongo"
+  ],
+  "files": [
+    "LICENSE",
+    "README.md",
+    "lib"
   ]
 }
