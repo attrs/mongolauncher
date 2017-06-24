@@ -17,16 +17,17 @@ $ npm install mongolauncher --save
 ```js
 var mongolauncher = require('mongolauncher');
 
-// use default dbpath(~/.mongolauncher/db/default), version(3.0.15), 
+// use default options, dbpath(~/.mongolauncher/db/default), version(3.0.15), no auth
 mongolauncher.launch(27017);
 
+// with options
 mongolauncher.launch({
   port: 27017,
   version: '3.4.5',
   auth: true,
   username: 'user',
   password: 'password',
-  dbname: 'mydb',
+  authdb: 'admin',
   argv: ['--directoryperdb', '--smallfiles', '--journal'],
   dbpath: '/mongo/mydb/db',
   logpath: '/mongo/mydb/logs',
